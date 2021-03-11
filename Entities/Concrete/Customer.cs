@@ -1,4 +1,4 @@
-﻿using Entities.Abstract;
+﻿using Market.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
