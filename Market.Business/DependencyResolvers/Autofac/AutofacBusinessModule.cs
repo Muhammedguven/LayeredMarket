@@ -18,7 +18,7 @@ namespace Market.Business.DependencyResolvers.Autofac
         {
             builder.RegisterType<ProductManager>().As<IProductService>().SingleInstance();
             builder.RegisterType<EFProductDal>().As<IProductDal>().SingleInstance();
-
+            builder.RegisterType<CategoryManager>().As<ICategoryService>().SingleInstance();
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 
