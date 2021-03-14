@@ -1,8 +1,12 @@
-﻿using Core.Utilities.Results;
+﻿using Core.Aspects.Autofac.Validation;
+using Core.CrossCuttingConcerns.Validation;
+using Core.Utilities.Results;
 using Entities.Concrete;
 using Entities.DTOs;
+using FluentValidation;
 using Market.Business.Abstract;
 using Market.Business.Constants;
+using Market.Business.ValidationRules.FluentValidation;
 using Market.DataAccess.Abstract;
 using System;
 using System.Collections.Generic;
@@ -19,13 +23,11 @@ namespace Market.Business.Concrete
             _productDal = productDal;
         }
 
+        [ValidationAspect(typeof(ProductValidator))]
         public IResult Add(Product product)
         {
-            if (product.ProductName.Length<2)
-            {
-                return new ErrorResult(Messages.ProductNameInvalid);
-            }
-            //Kuralları yaz
+           
+            
             _productDal.Add(product);
 
 
