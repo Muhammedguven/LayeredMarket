@@ -6,6 +6,7 @@ using Entities.Concrete;
 using Entities.DTOs;
 using FluentValidation;
 using Market.Business.Abstract;
+using Market.Business.BusinessAspects.Autofac;
 using Market.Business.Constants;
 using Market.Business.ValidationRules.FluentValidation;
 using Market.DataAccess.Abstract;
@@ -26,6 +27,7 @@ namespace Market.Business.Concrete
             _categoryService = categoryService;
         }
 
+        [SecuredOperation("product.add,admin")]
         [ValidationAspect(typeof(ProductValidator))]
         public IResult Add(Product product)
         {
